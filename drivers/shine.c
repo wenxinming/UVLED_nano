@@ -135,7 +135,7 @@ void shine_entry_manual(void *parameter)//manual mode
                 channel1_old_status = 1;
                 LightON1();
             }
-            if(Temp1>=channel1.alarm_temperature)//温度报警
+            if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
             {
                 BEEP_ON;
                 Alarm1_ON;
@@ -155,7 +155,7 @@ void shine_entry_manual(void *parameter)//manual mode
         }else {
             if(channel1_old_status)
             {
-                if(Temp1>=channel1.alarm_temperature)//温度报警
+                if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
                 {
                     UpdataLcdString(7,17,"温度报警");
                 }else if(Read_CheckLed1==0)//报警
@@ -191,7 +191,7 @@ void shine_entry_manual(void *parameter)//manual mode
                 channel2_old_status = 1;
                 LightON2();
             }
-            if(Temp2>=channel2.alarm_temperature)//Temp Alarm
+            if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//Temp Alarm
             {
                 BEEP_ON;
                 Alarm2_ON;
@@ -211,7 +211,7 @@ void shine_entry_manual(void *parameter)//manual mode
         }else {
             if(channel2_old_status)
             {
-                if(Temp2>=channel2.alarm_temperature)//温度报警
+                if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//温度报警
                 {
                     UpdataLcdString(7,19,"温度报警");
                 }else if(Read_CheckLed2==0)//报警
@@ -347,7 +347,7 @@ void shine_entry_auto(void *parameter)//自动模式
                 channel1_old_status = 1;
                 LightON1();
             }
-            if(Temp1>=channel1.alarm_temperature)//温度报警
+            if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
             {
                 BEEP_ON;
                 Alarm1_ON;
@@ -373,7 +373,7 @@ void shine_entry_auto(void *parameter)//自动模式
             if(channel1_old_status)
             {
 
-                if(Temp1>=channel1.alarm_temperature)//温度报警
+                if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
                 {
                     UpdataLcdString(7,17,"温度报警");
                 }else if(Read_CheckLed1==0)//报警
@@ -411,7 +411,7 @@ void shine_entry_auto(void *parameter)//自动模式
                 LightON2();
             }
             channel2.now_time_s++;
-            if(Temp2>=channel2.alarm_temperature)//温度报警
+            if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//温度报警
             {
                 BEEP_ON;
                 Alarm2_ON;
@@ -436,7 +436,7 @@ void shine_entry_auto(void *parameter)//自动模式
             if(channel2_old_status)
             {
 
-                if(Temp2>=channel2.alarm_temperature)//温度报警
+                if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//温度报警
                 {
                     UpdataLcdString(7,19,"温度报警");
                 }else if(Read_CheckLed2==0)//报警
@@ -576,7 +576,7 @@ void shine_entry_multistage(void *parameter)//多段
                cycle1=0;
                large_cycle1 = 0;
            }
-           if(Temp1>=channel1.alarm_temperature)//温度报警
+           if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
            {
                BEEP_ON;
                Alarm1_ON;
@@ -619,7 +619,7 @@ void shine_entry_multistage(void *parameter)//多段
            if(channel1_old_status)
            {
                UpdataLcdString(7,17,"关闭照射");
-               if(Temp1>=channel1.alarm_temperature)//温度报警
+               if(Temp1>=channel1.alarm_temperature || Temp1 <= 0)//温度报警
                {
                    UpdataLcdString(7,17,"温度报警");
                }else if(Read_CheckLed1==0)//报警
@@ -659,7 +659,7 @@ void shine_entry_multistage(void *parameter)//多段
               cycle2=0;
               large_cycle2 = 0;
           }
-          if(Temp2>=channel2.alarm_temperature)//温度报警
+          if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//温度报警
           {
               BEEP_ON;
               Alarm2_ON;
@@ -701,7 +701,7 @@ void shine_entry_multistage(void *parameter)//多段
       }else {
           if(channel2_old_status)
           {
-              if(Temp2>=channel2.alarm_temperature)//温度报警
+              if(Temp2>=channel2.alarm_temperature || Temp2 <= 0)//温度报警
               {
                   UpdataLcdString(7,19,"温度报警");
               }else if(Read_CheckLed2==0)//报警

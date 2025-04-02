@@ -433,6 +433,8 @@ void lcd_command_entry(void *parameter)//lcd命令执行
                         channel2.power = 80;
                         channel1.time = 60;
                         channel2.time = 60;
+                        channel1.delay_time = 60;
+                        channel2.delay_time = 60;
                         control_mode.control_mode = 0;
                         //Channel2CtrlMode=0;
                         save();//保存设置

@@ -800,15 +800,21 @@ void shine_init()//照射初始化
     {
         //UpdataLcdDataU8(7,8,0);//通道1时间
         //UpdataLcdDataU8(7,12,0);//通道2时间
+        if(shine!=0)
+            rt_thread_delete(shine);
         shine = rt_thread_create("shine", shine_entry_manual, RT_NULL, 1024, 20, 10);
         rt_thread_startup(shine);//启动线程
     }else {//自动模式
 
         if(control_mode.light_mode == 0)//固定照射
         {
+            if(shine!=0)
+                rt_thread_delete(shine);
             shine = rt_thread_create("shine", shine_entry_auto, RT_NULL, 1024, 20, 10);
             rt_thread_startup(shine);//启动线程
         }else {//阶梯照射
+            if(shine!=0)
+                rt_thread_delete(shine);
             shine = rt_thread_create("shine", shine_entry_multistage, RT_NULL, 1024, 20, 10);
             rt_thread_startup(shine);//启动线程
         }

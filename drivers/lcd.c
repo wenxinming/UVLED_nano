@@ -494,7 +494,7 @@ void lcd_command_entry(void *parameter)//lcd命令执行
                     {
                         read_temp_running = 0;
                         updatarunbutton(0,1,7);
-                        updatarunbutton(1,0x10,7);
+                        updatarunbutton(0,0x10,7);
                     }
 
 

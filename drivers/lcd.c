@@ -18,6 +18,7 @@ rt_thread_t lcd_receive_tid;//lcd接收线程
 rt_mq_t lcd_command_mq,lcd_command_send_mq;//创建lcd命令消息队列
 rt_thread_t lcdcommand,lcdsend;
 rt_uint8_t on_shine_page;
+rt_uint8_t led_on_io1,led_on_io2;//外部开灯变量
 //rt_err_t sl;
 extern void shine_entry(void *parameter);//lcd命令执行
 typedef struct
@@ -243,6 +244,8 @@ void lcd_command_entry(void *parameter)//lcd命令执行
     i=0;
     last_state1 = Read_LedOn1;
     last_state2 = Read_LedOn2;
+    led_on_io1 = 0;
+    led_on_io2 = 0;
     while(1)
     {
         rt_memset(&buff, 0, sizeof(buff));
@@ -252,6 +255,7 @@ void lcd_command_entry(void *parameter)//lcd命令执行
             {
                 if(on_shine_page == 0)
                 {
+                    led_on_io1=1;
                     shine_init();//照射初始化
                     read_temp_running = 1;
                     switch_show(7);
@@ -267,6 +271,7 @@ void lcd_command_entry(void *parameter)//lcd命令执行
             {
                 if(on_shine_page == 0)
                {
+                   led_on_io2=1;
                    shine_init();//照射初始化
                    read_temp_running = 1;
                    switch_show(7);
@@ -436,6 +441,13 @@ void lcd_command_entry(void *parameter)//lcd命令执行
                         channel1.delay_time = 60;
                         channel2.delay_time = 60;
                         control_mode.control_mode = 0;
+                        for (int i = 0;i < 10;i++)
+                        {
+                            channel1.multistage_power[i] = 80;
+                            channel2.multistage_power[i] = 80;
+                            channel1.multistage_time[i] = 10;
+                            channel2.multistage_time[i] = 10;
+                        }
                         //Channel2CtrlMode=0;
                         save();//保存设置
                         rt_thread_mdelay(1000);

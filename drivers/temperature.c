@@ -176,6 +176,8 @@ void read_temp_entry(void *parameter)//温度刷新
     {
         Temp1 = read_temperature(0);
         Temp2 = read_temperature(1);
+//        Temp1 = 30;
+//        Temp2 = 30;
         voltage = adc_get_result_average(0, 10);    /* 获取ADC通道的转换值，10次取平均 */
         if(read_temp_watch)
         {

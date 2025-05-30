@@ -75,21 +75,13 @@ void pwm_init()
 }
 void set_ch1_output(rt_uint8_t num)
 {
-    num+=14;
-    if(num>100)
-    {
-        num = 100;
-    }
-    __HAL_TIM_SET_COMPARE(&g_timx_pwm_chy_handle, OutputCH1, num*5*(voltage/4096.0));
+
+    __HAL_TIM_SET_COMPARE(&g_timx_pwm_chy_handle, OutputCH1, (num*4.3 + 14*5)*(voltage/4096.0));
 }
 void set_ch2_output(rt_uint8_t num)
 {
-    num+=14;
-    if(num>100)
-    {
-        num = 100;
-    }
-    __HAL_TIM_SET_COMPARE(&g_timx_pwm_chy_handle, OutputCH2, num*5*(voltage/4096.0));
+
+    __HAL_TIM_SET_COMPARE(&g_timx_pwm_chy_handle, OutputCH2, (num*4.3 + 14*5)*(voltage/4096.0));
 }
 void ch1_output_off()
 {

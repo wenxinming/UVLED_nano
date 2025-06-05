@@ -152,7 +152,7 @@ void shine_entry_manual(void *parameter)//manual mode
             if(channel1_old_status == 0 )
             {
                 channel1.now_time_s = 0;
-                UpdataLcdString(7, 17, "Light on");
+                UpdataLcdString(7, 17, "开启照射");
                 updatarunbutton(1,1,7);//通道1按钮
                 EN1_ON;
                 set_ch1_output(channel1.power);//设置PWM占空比
@@ -162,7 +162,7 @@ void shine_entry_manual(void *parameter)//manual mode
                 if(Temp1>=channel1.alarm_temperature || Temp1 == 0 || (channel1.now_time_s>=3 && Read_CheckLed1==0));
                 else BEEP_OFF;
             }
-            if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+            if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
             {
                 BEEP_ON;
                 Alarm1_ON;
@@ -181,14 +181,14 @@ void shine_entry_manual(void *parameter)//manual mode
         }else {
             if(channel1_old_status)
             {
-                if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+                if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
                 {
-                    UpdataLcdString(7,17,"Temp alarm");
+                    UpdataLcdString(7,17,"温度报警");
                 }else if(Read_CheckLed1==0)//报警
                 {
-                    UpdataLcdString(7, 17, "abnormal");
+                    UpdataLcdString(7, 17, "负载异常");
                 }else {
-                    UpdataLcdString(7,17,"Light off");
+                    UpdataLcdString(7,17,"关闭照射");
                 }
                 EN1_OFF;
                 set_ch1_output(0);//设置PWM占空比
@@ -210,7 +210,7 @@ void shine_entry_manual(void *parameter)//manual mode
             if(channel2_old_status == 0 )
             {
                 channel2.now_time_s = 0;
-                UpdataLcdString(7,19,"Light on");
+                UpdataLcdString(7,19,"开启照射");
                 updatarunbutton(1,0x10,7);//更新通道2按钮
                 EN2_ON;
                 set_ch2_output(channel2.power);//设置PWM占空比
@@ -220,7 +220,7 @@ void shine_entry_manual(void *parameter)//manual mode
                 if(Temp2>=channel2.alarm_temperature || Temp2 == 0 || (channel2.now_time_s>=3 && Read_CheckLed2==0));
                 else BEEP_OFF;
             }
-            if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//Temp Alarm
+            if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//温度报警
             {
                 BEEP_ON;
                 Alarm2_ON;
@@ -239,14 +239,14 @@ void shine_entry_manual(void *parameter)//manual mode
         }else {
             if(channel2_old_status)
             {
-                if(Temp2>=channel2.alarm_temperature || Temp2 == 0) //Temp alarm
+                if(Temp2>=channel2.alarm_temperature || Temp2 == 0) //温度报警
                 {
-                    UpdataLcdString(7,19,"Temp alarm");
+                    UpdataLcdString(7,19,"温度报警");
                 }else if(Read_CheckLed2==0)//报警
                 {
-                    UpdataLcdString(7,19,"abnormal");
+                    UpdataLcdString(7,19,"负载异常");
                 }else {
-                    UpdataLcdString(7,19,"Light off");
+                    UpdataLcdString(7,19,"关闭照射");
                 }
                 EN2_OFF;
                 set_ch2_output(0);//设置PWM占空比
@@ -265,8 +265,8 @@ void shine_entry_manual(void *parameter)//manual mode
          }
         if(read_temp_running==0)//退出
         {
-            UpdataLcdString(7,17,"Light off");
-            UpdataLcdString(7,19,"Light off");
+            UpdataLcdString(7,17,"关闭照射");
+            UpdataLcdString(7,19,"关闭照射");
             EN1_OFF;
             EN2_OFF;
             set_ch1_output(0);//设置PWM占空比
@@ -409,7 +409,7 @@ void shine_entry_auto(void *parameter)//自动模式
             {
                 Complete1_OFF;
                 channel1.now_time_s = 0;
-                UpdataLcdString(7,17,"Light on");
+                UpdataLcdString(7,17,"开启照射");
                 updatarunbutton(1,1,7);//通道1按钮
                 EN1_ON;
                 set_ch1_output(channel1.power);//设置PWM占空比
@@ -419,7 +419,7 @@ void shine_entry_auto(void *parameter)//自动模式
                 if(Temp1>=channel1.alarm_temperature || Temp1 == 0 || (channel1.now_time_s>=3 && Read_CheckLed1==0));
                 else BEEP_OFF;
             }
-            if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+            if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
             {
                 BEEP_ON;
                 Alarm1_ON;
@@ -446,14 +446,14 @@ void shine_entry_auto(void *parameter)//自动模式
             if(channel1_old_status)
             {
 
-                if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+                if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
                 {
-                    UpdataLcdString(7,17,"Temp alarm");
+                    UpdataLcdString(7,17,"温度报警");
                 }else if(Read_CheckLed1==0)//报警
                 {
-                 UpdataLcdString(7,17,"abnormal");
+                 UpdataLcdString(7,17,"负载异常");
                 }else {
-                    UpdataLcdString(7,17,"Light off");
+                    UpdataLcdString(7,17,"关闭照射");
                 }
                 EN1_OFF;
                 set_ch1_output(0);//设置PWM占空比
@@ -476,7 +476,7 @@ void shine_entry_auto(void *parameter)//自动模式
             {
                 Complete2_OFF;
                 channel2.now_time_s = 0;
-                UpdataLcdString(7,19,"Light on");
+                UpdataLcdString(7,19,"开启照射");
                 updatarunbutton(1,0x10,7);//更新通道2按钮
                 EN2_ON;
                 set_ch2_output(channel2.power);//设置PWM占空比
@@ -487,7 +487,7 @@ void shine_entry_auto(void *parameter)//自动模式
                 else BEEP_OFF;
             }
            // channel2.now_time_s++;
-            if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//Temp alarm
+            if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//温度报警
             {
                 BEEP_ON;
                 Alarm2_ON;
@@ -513,14 +513,14 @@ void shine_entry_auto(void *parameter)//自动模式
             if(channel2_old_status)
             {
 
-                if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//Temp alarm
+                if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//温度报警
                 {
-                    UpdataLcdString(7,19,"Temp alarm");
+                    UpdataLcdString(7,19,"温度报警");
                 }else if(Read_CheckLed2==0)//报警
                   {
-                    UpdataLcdString(7,19,"abnormal");
+                    UpdataLcdString(7,19,"负载异常");
                   }else {
-                      UpdataLcdString(7,19,"Light off");
+                      UpdataLcdString(7,19,"关闭照射");
                 }
                 EN2_OFF;
                 set_ch2_output(0);//设置PWM占空比
@@ -539,8 +539,8 @@ void shine_entry_auto(void *parameter)//自动模式
          }
         if(read_temp_running==0)//退出
         {
-            UpdataLcdString(7,17,"Light off");
-            UpdataLcdString(7,19,"Light off");
+            UpdataLcdString(7,17,"关闭照射");
+            UpdataLcdString(7,19,"关闭照射");
             EN1_OFF;
             EN2_OFF;
             set_ch1_output(0);//设置PWM占空比
@@ -694,7 +694,7 @@ void shine_entry_multistage(void *parameter)//多段
            if(channel1_old_status == 0 )
            {
                channel1.now_time_s = 0;
-               UpdataLcdString(7,17,"Light on");
+               UpdataLcdString(7,17,"开启照射");
                updatarunbutton(1,1,7);//通道1按钮
                EN1_ON;
                set_ch1_output(channel1.multistage_power[cycle1]);//设置PWM占空比
@@ -707,7 +707,7 @@ void shine_entry_multistage(void *parameter)//多段
                if(Temp1>=channel1.alarm_temperature || Temp1 == 0 || (channel1.now_time_s>=3 && Read_CheckLed1==0));
                else BEEP_OFF;
            }
-           if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+           if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
            {
                BEEP_ON;
                Alarm1_ON;
@@ -751,15 +751,15 @@ void shine_entry_multistage(void *parameter)//多段
        }else {
            if(channel1_old_status)
            {
-               UpdataLcdString(7,17,"Light off");
-               if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//Temp alarm
+               UpdataLcdString(7,17,"关闭照射");
+               if(Temp1>=channel1.alarm_temperature || Temp1 == 0)//温度报警
                {
-                   UpdataLcdString(7,17,"Temp alarm");
+                   UpdataLcdString(7,17,"温度报警");
                }else if(Read_CheckLed1==0)//报警
                {
-                   UpdataLcdString(7,17,"abnormal");
+                   UpdataLcdString(7,17,"负载异常");
                }else {
-                   UpdataLcdString(7,17,"Light off");
+                   UpdataLcdString(7,17,"关闭照射");
             }
                EN1_OFF;
                set_ch1_output(0);//设置PWM占空比
@@ -782,7 +782,7 @@ void shine_entry_multistage(void *parameter)//多段
           if(channel2_old_status == 0 )
           {
               channel2.now_time_s = 0;
-              UpdataLcdString(7,19,"Light on");
+              UpdataLcdString(7,19,"开启照射");
               updatarunbutton(1,0x10,7);//更新通道2按钮
               EN2_ON;
               set_ch2_output(channel2.multistage_power[cycle2]);//设置PWM占空比
@@ -795,7 +795,7 @@ void shine_entry_multistage(void *parameter)//多段
               if(Temp2>=channel2.alarm_temperature || Temp2 == 0 || (channel2.now_time_s>=3 && Read_CheckLed2==0));
               else BEEP_OFF;
           }
-          if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//Temp alarm
+          if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//温度报警
           {
               BEEP_ON;
               Alarm2_ON;
@@ -839,14 +839,14 @@ void shine_entry_multistage(void *parameter)//多段
       }else {
           if(channel2_old_status)
           {
-              if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//Temp alarm
+              if(Temp2>=channel2.alarm_temperature || Temp2 == 0)//温度报警
               {
-                  UpdataLcdString(7,19,"Temp alarm");
+                  UpdataLcdString(7,19,"温度报警");
               }else if(Read_CheckLed2==0)//报警
               {
-                UpdataLcdString(7,19,"abnormal");
+                UpdataLcdString(7,19,"负载异常");
               }else {
-                  UpdataLcdString(7,19,"Light off");
+                  UpdataLcdString(7,19,"关闭照射");
             }
               EN2_OFF;
               set_ch2_output(0);//设置PWM占空比
@@ -865,8 +865,8 @@ void shine_entry_multistage(void *parameter)//多段
       }
         if(read_temp_running==0)//退出
         {
-            UpdataLcdString(7,17,"Light off");
-            UpdataLcdString(7,19,"Light off");
+            UpdataLcdString(7,17,"关闭照射");
+            UpdataLcdString(7,19,"关闭照射");
             EN1_OFF;
             EN2_OFF;
             set_ch1_output(0);//设置PWM占空比
